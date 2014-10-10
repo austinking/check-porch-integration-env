@@ -10,13 +10,22 @@ Simple script to detect which Porch integration services are down
 
 ## Usage
 
-    > ./check-integration-env ~/src/porch-all/porch-pro/service.yaml
-    > [FAIL] foobar service: http://foobar.example.com:9252/healthcheck
+##### Command Line
+
+    > ./check ~/src/porch-all/porch-pro/service.yaml
     > Good Services:etl, logdaemon, ugc, mastery, identity, image, mobile, manageddata, search, analytics, backporch, solr, ecom, mega
 
-You can debug with `--debug=true`
+##### Library
 
-    > ./check-integration-env ~/src/porch-all/porch-pro/service.yaml --debug=true
+     var check = require('check-porch-integration');
+     
+     check('service.yaml', function(err, result) {
+          // assuming no err, result will look like this:
+          // {
+          //    good: ['etl', 'mega' ...]
+          //    bad: ['identity']
+          // }
+     });
 
 ## yaml config
 
