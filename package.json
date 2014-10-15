@@ -1,6 +1,6 @@
 {
   "name": "check-porch-integration-env",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple script to detect which Porch integration services are down",
   "main": "lib/check-integration-env",
   "repository": {

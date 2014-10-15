@@ -17,7 +17,11 @@ check(config, function(err, result) {
     if (err) {
         console.log('ERROR: ' + err);
     } else {
-        console.log('GOOD: ' + result.good.join(' ,'));
-        console.log('BAD: ' + result.bad.join(' ,'));
+        console.log('GOOD: ' + result.good.map(function(s) { return s.name; }).join(' ,'));
+        console.log('BAD: ' + result.bad.map(function(s) { return s.name; }).join(' ,'));
+        for (var i = 0; i < result.bad.length; i++) {
+          var bad = result.bad[i];
+          console.log('[ERROR] ' + bad.name + '(' + bad.url + ') - ' + bad.body);
+        }
     }
 });
