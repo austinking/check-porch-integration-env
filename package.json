@@ -1,19 +1,25 @@
 {
   "name": "check-porch-integration-env",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "Simple script to detect which Porch integration services are down",
-  "main": "check-integration-env",  
+  "main": "lib/check-integration-env",
   "repository": {
     "type": "git",
-    "url": "https://github.com/austinking/check-porch-integration-env.git"
+    "url": "https://github.com/porchdotcom/check-porch-integration-env.git"
   },
   "dependencies": {
-    "js-yaml":"3.2.2"
-    },
+    "js-yaml": "3.2.2",
+    "async": "0.9.0",
+    "request": "^2.45.0"
+  },
   "author": "Austin King",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/austinking/check-porch-integration-env/issues"
+    "url": "https://github.com/porchdotcom/check-porch-integration-env/issues"
   },
-  "homepage": "https://github.com/austinking/check-porch-integration-env"
+  "homepage": "https://github.com/porchdotcom/check-porch-integration-env",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+var check = require('./lib/check-integration-env');
+
+if (process.argv.length <= 2) {
+	process.stderr.write('Usage: check-integration-env path/to/services.yaml [--debug=true]\n');
+	process.exit(1);
+}
+
+var config = process.argv[2];
+
+if (process.argv.length >= 4 &&
+    process.argv[3] === '--debug=true') {
+	DEBUG = true;
+}
+
+check(config, function(err, result) {
+    if (err) {
+        console.log('ERROR: ' + err);
+    } else {
+        console.log('GOOD: ' + result.good.map(function(s) { return s.name; }).join(' ,'));
+        console.log('BAD: ' + result.bad.map(function(s) { return s.name; }).join(' ,'));
+        for (var i = 0; i < result.bad.length; i++) {
+          var bad = result.bad[i];
+          console.log('[ERROR] ' + bad.name + '(' + bad.url + ') - ' + bad.body);
+        }
+    }
+});
